@@ -48,7 +48,7 @@ const Home = () => {
       {/* Mensaje de bienvenida */}
       <div className="bg-white rounded-xl shadow-lg p-6">
         <h1 className="text-2xl font-semibold text-gray-800">
-          ¡Hola, <span className="text-blue-600">{usuario.nombre}</span>!
+          ¡Hola, <span className="text-red-600">{usuario.nombre}</span>!
         </h1>
         <p className="text-gray-600 mt-1">
           Bienvenido a tu panel de puntos. Aquí podrás ver tu saldo y tus movimientos recientes.
@@ -56,11 +56,11 @@ const Home = () => {
       </div>
 
       {/* Tarjeta de puntos */}
-      <div className="bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl shadow-lg p-6 text-white">
+      <div className="bg-gradient-to-r from-red-500 to-red-600 rounded-xl shadow-lg p-6 text-white">
         <div className="flex items-center justify-between">
           <div>
             <h2 className="text-2xl font-semibold">Tus Puntos</h2>
-            <p className="text-blue-100">Saldo actual</p>
+            <p className="text-white-100">Saldo actual</p>
           </div>
           <div className="bg-white/20 p-3 rounded-full">
             <FaCoins className="text-3xl" />
