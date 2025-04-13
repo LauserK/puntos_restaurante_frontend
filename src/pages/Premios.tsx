@@ -24,9 +24,9 @@ const Premios = () => {
     cargarPremios()
   }, [])
 
-  const handleCanjearPremio = async (premioId: number) => {
+  /*const handleCanjearPremio = async () => {
     try {
-      const resultado = await api.canjearPremio(premioId)
+      const resultado = await api.canjearPremio()
       if (resultado.success) {
         // Aquí podrías actualizar el estado de los puntos del usuario
         alert(resultado.message)
@@ -35,7 +35,7 @@ const Premios = () => {
       console.error('Error al canjear premio:', error)
       alert('Error al canjear el premio')
     }
-  }
+  }*/
 
   if (loading) {
     return (
@@ -92,7 +92,7 @@ const Premios = () => {
                 {premio.descripcion}
               </p>
               {/*<button 
-                onClick={() => handleCanjearPremio(premio.id)}
+                onClick={() => handleCanjearPremio()}
                 className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors duration-300"
               >
                 Canjear premio

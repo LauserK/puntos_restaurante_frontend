@@ -75,7 +75,7 @@ export const api = {
   },
 
   // Canjear premio
-  canjearPremio: async (premioId: number): Promise<{ success: boolean; message: string }> => {
+  canjearPremio: async (): Promise<{ success: boolean; message: string }> => {
     await new Promise(resolve => setTimeout(resolve, 1000))
     return {
       success: true,
