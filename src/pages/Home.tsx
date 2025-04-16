@@ -1,10 +1,12 @@
 import { FaCoins, FaArrowUp, FaArrowDown } from 'react-icons/fa'
 import { useEffect, useState } from 'react'
 import { api } from '../services/api'
-import { Usuario, Movimiento } from '../types'
+import { Movimiento } from '../types'
+import { User } from '../types/auth'
+import authService from '../services/authService'
 
 const Home = () => {
-  const [usuario, setUsuario] = useState<Usuario | null>(null)
+  const [usuario, setUsuario] = useState<User | null>(null)
   const [movimientos, setMovimientos] = useState<Movimiento[]>([])
   const [loading, setLoading] = useState(true)
 
@@ -12,7 +14,7 @@ const Home = () => {
     const cargarDatos = async () => {
       try {
         const [usuarioData, movimientosData] = await Promise.all([
-          api.getUsuario(),
+          authService.getCurrentUser(),
           api.getMovimientos()
         ])
         setUsuario(usuarioData)
@@ -48,7 +50,7 @@ const Home = () => {
       {/* Mensaje de bienvenida */}
       <div className="bg-white rounded-xl shadow-lg p-6">
         <h1 className="text-2xl font-semibold text-gray-800">
-          ¡Hola, <span className="text-red-600">{usuario.nombre}</span>!
+          ¡Hola, <span className="text-red-600">{usuario.first_name}</span>!
         </h1>
         <p className="text-gray-600 mt-1">
           Bienvenido a tu panel de puntos. Aquí podrás ver tu saldo y tus movimientos recientes.

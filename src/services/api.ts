@@ -1,18 +1,12 @@
-import { Usuario, Movimiento, Premio } from '../types'
-
-// Simulación de datos
-const usuario: Usuario = {
-  id: 1,
-  nombre: "Juan Pérez",
-  puntos: 1250
-}
+import { Movimiento, Premio } from '../types'
+import { User } from '../types/auth'
 
 const movimientos: Movimiento[] = [
-  { id: 1, tipo: 'ganancia', cantidad: 100, descripcion: 'Compra en tienda', fecha: '2024-03-15' },
+  { id: 1, tipo: 'ganancia', cantidad: 100, descripcion: 'Pedido #122222', fecha: '2024-03-15' },
   { id: 2, tipo: 'gasto', cantidad: 50, descripcion: 'Canje de premio', fecha: '2024-03-14' },
-  { id: 3, tipo: 'ganancia', cantidad: 200, descripcion: 'Referido', fecha: '2024-03-13' },
+  { id: 3, tipo: 'ganancia', cantidad: 200, descripcion: 'Pedido #333555', fecha: '2024-03-13' },
   { id: 4, tipo: 'gasto', cantidad: 75, descripcion: 'Canje de premio', fecha: '2024-03-12' },
-  { id: 5, tipo: 'ganancia', cantidad: 150, descripcion: 'Compra en tienda', fecha: '2024-03-11' },
+  { id: 5, tipo: 'ganancia', cantidad: 150, descripcion: 'Pedido #112255', fecha: '2024-03-11' },
 ]
 
 const premios: Premio[] = [
@@ -55,12 +49,6 @@ const premios: Premio[] = [
 
 // Simulación de llamadas a API
 export const api = {
-  // Usuario
-  getUsuario: async (): Promise<Usuario> => {
-    // Simulación de delay de red
-    await new Promise(resolve => setTimeout(resolve, 500))
-    return usuario
-  },
 
   // Movimientos
   getMovimientos: async (): Promise<Movimiento[]> => {

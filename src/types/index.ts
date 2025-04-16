@@ -1,9 +1,3 @@
-export interface Usuario {
-  id: number
-  nombre: string
-  puntos: number
-}
-
 export interface Movimiento {
   id: number
   tipo: 'ganancia' | 'gasto'

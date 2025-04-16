@@ -79,7 +79,7 @@ const Premios = () => {
                 alt={premio.nombre}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute top-4 right-4 bg-blue-600 text-white px-3 py-1 rounded-full flex items-center gap-1">
+              <div className="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full flex items-center gap-1">
                 <FaCoins />
                 <span>{premio.puntos}</span>
               </div>
