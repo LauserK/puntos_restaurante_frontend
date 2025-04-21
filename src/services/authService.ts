@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { User } from '../types/auth';
 
-const API_URL = 'http://localhost:8000/api/auth/'
+const API_URL = 'http://localhost:3000/api/auth/'
 
 
 interface LoginCredentials {
@@ -66,28 +66,28 @@ class AuthService {
         }
         
         try {
-        const response = await axios.get(`${API_URL}user/`, {
-            headers: {
-            'Authorization': `Bearer ${tokens.access}`
-            }
-        });
-        return response.data;
-        } catch (error) {
-        // Si hay un error (token expirado), intentamos refrescar el token
-        try {
-            await this.refreshToken();
-            const newTokens = JSON.parse(localStorage.getItem('authTokens') || '{}');
-            
             const response = await axios.get(`${API_URL}user/`, {
-            headers: {
-                'Authorization': `Bearer ${newTokens.access}`
-            }
+                headers: {
+                'Authorization': `Bearer ${tokens.access}`
+                }
             });
             return response.data;
-        } catch (refreshError) {
-            this.logout();
-            return null;
-        }
+        } catch (error) {
+            // Si hay un error (token expirado), intentamos refrescar el token
+            try {
+                await this.refreshToken();
+                const newTokens = JSON.parse(localStorage.getItem('authTokens') || '{}');
+                
+                const response = await axios.get(`${API_URL}user/`, {
+                headers: {
+                    'Authorization': `Bearer ${newTokens.access}`
+                }
+                });
+                return response.data;
+            } catch (refreshError) {
+                this.logout();
+                return null;
+            }
         }
     }
 

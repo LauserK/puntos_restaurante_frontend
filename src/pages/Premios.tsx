@@ -24,18 +24,9 @@ const Premios = () => {
     cargarPremios()
   }, [])
 
-  /*const handleCanjearPremio = async () => {
-    try {
-      const resultado = await api.canjearPremio()
-      if (resultado.success) {
-        // Aquí podrías actualizar el estado de los puntos del usuario
-        alert(resultado.message)
-      }
-    } catch (error) {
-      console.error('Error al canjear premio:', error)
-      alert('Error al canjear el premio')
-    }
-  }*/
+  const handleCanjearPremio = async (premio: Premio) => {
+    window.open(`https://wa.me/584244001800?text=Quiero%20canjear%20el%20premio%20${premio.nombre}%20usando%20mis%20puntos`, '_blank');
+  }
 
   if (loading) {
     return (
@@ -58,7 +49,7 @@ const Premios = () => {
       {/* Encabezado */}
       <div className="bg-white rounded-xl shadow-lg p-6">
         <h1 className="text-2xl font-semibold text-gray-800 flex items-center gap-2">
-          <FaGift className="text-blue-600" />
+          <FaGift className="text-red-600" />
           Premios Disponibles
         </h1>
         <p className="text-gray-600 mt-1">
@@ -81,7 +72,7 @@ const Premios = () => {
               />
               <div className="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full flex items-center gap-1">
                 <FaCoins />
-                <span>{premio.puntos}</span>
+                <span>{premio.puntos_requeridos}</span>
               </div>
             </div>
             <div className="p-6">
@@ -91,12 +82,12 @@ const Premios = () => {
               <p className="text-gray-600 mb-4">
                 {premio.descripcion}
               </p>
-              {/*<button 
-                onClick={() => handleCanjearPremio()}
-                className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors duration-300"
+              <button 
+                onClick={() => handleCanjearPremio(premio)}
+                className="w-full bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700 transition-colors duration-300"
               >
                 Canjear premio
-              </button>*/}
+              </button>
             </div>
           </div>
         ))}

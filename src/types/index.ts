@@ -9,7 +9,7 @@ export interface Movimiento {
 export interface Premio {
   id: number
   nombre: string
-  puntos: number
+  puntos_requeridos: number
   imagen: string
   descripcion: string
 } 
